@@ -7,20 +7,24 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #161616;
-      --muted: #666b72;
-      --line: #d9dde2;
-      --panel: #f4f6f8;
-      --panel-strong: #e8edf2;
-      --accent: #0f6cbd;
-      --accent-dark: #0a4f8a;
-      --green: #2f7d62;
-      --rose: #d35f65;
+      --ink: #17202a;
+      --muted: #5e6977;
+      --line: #d9e0e8;
+      --panel: #f5f7fa;
+      --accent: #0f766e;
+      --accent-strong: #0b5f59;
+      --blue: #2563eb;
+      --rose: #db2777;
+      --dark: #0f172a;
       --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -36,41 +40,47 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      min-height: 64px;
-      padding: 0 28px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      background: rgba(255, 255, 255, 0.86);
-      backdrop-filter: blur(16px);
+      gap: 20px;
+      min-height: 66px;
+      padding: 0 6vw;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 18px;
     }
 
     .brand img {
-      width: 32px;
-      height: 32px;
-      border-radius: 7px;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       color: var(--muted);
       font-size: 14px;
+      font-weight: 700;
     }
 
     .button {
@@ -79,17 +89,17 @@
       justify-content: center;
       min-height: 42px;
       padding: 0 18px;
-      border-radius: 6px;
       border: 1px solid transparent;
+      border-radius: 6px;
       background: var(--accent);
       color: white;
-      font-weight: 700;
+      font-weight: 800;
       white-space: nowrap;
       transition: background 160ms ease, transform 160ms ease;
     }
 
     .button:hover {
-      background: var(--accent-dark);
+      background: var(--accent-strong);
       transform: translateY(-1px);
     }
 
@@ -100,41 +110,41 @@
     }
 
     .hero {
-      min-height: calc(100vh - 64px);
+      min-height: calc(100vh - 66px);
       display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+      grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
       align-items: center;
       gap: 48px;
-      padding: 70px 7vw 54px;
+      padding: 64px 6vw 48px;
       background:
-        linear-gradient(120deg, rgba(244, 246, 248, 0.96), rgba(255, 255, 255, 0.72)),
-        url("../PhotoStudio/Assets/PhotoStudio.png") center right / cover no-repeat;
+        linear-gradient(120deg, rgba(248, 250, 252, 0.98), rgba(255, 255, 255, 0.74)),
+        url("../PhotoStudio/Assets/PhotoStudio.png") right center / cover no-repeat;
     }
 
     .hero-copy {
-      max-width: 660px;
+      max-width: 640px;
     }
 
     .eyebrow {
-      margin: 0 0 18px;
-      color: var(--green);
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-weight: 900;
       font-size: 14px;
-      font-weight: 800;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(48px, 6.4vw, 86px);
-      line-height: 0.96;
+      font-size: clamp(48px, 6.2vw, 86px);
+      line-height: 0.98;
       font-weight: 900;
     }
 
     .lead {
-      max-width: 560px;
       margin: 24px 0 0;
-      color: #3d434b;
+      max-width: 590px;
+      color: #344051;
       font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.65;
+      line-height: 1.7;
       word-break: keep-all;
     }
 
@@ -145,108 +155,24 @@
       margin-top: 34px;
     }
 
-    .preview {
-      align-self: end;
-      width: min(100%, 560px);
+    .hero-shot {
       justify-self: end;
-      padding: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.14);
+      border: 1px solid rgba(15, 23, 42, 0.18);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow: 0 30px 80px rgba(24, 39, 56, 0.16);
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 26px 70px rgba(15, 23, 42, 0.2);
     }
 
-    .window-bar {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      height: 28px;
-      padding: 0 4px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--rose);
-    }
-
-    .dot:nth-child(2) {
-      background: #d9b34d;
-    }
-
-    .dot:nth-child(3) {
-      background: var(--green);
-    }
-
-    .app-shot {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 12px;
-      min-height: 330px;
-      padding: 12px;
-      border-radius: 6px;
-      background: #1f2328;
-    }
-
-    .thumbs,
-    .editor {
-      border-radius: 5px;
-      background: #2b3036;
-    }
-
-    .thumbs {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      padding: 10px;
-    }
-
-    .thumb {
-      min-height: 86px;
-      border-radius: 4px;
-      background:
-        linear-gradient(135deg, rgba(211, 95, 101, 0.5), rgba(47, 125, 98, 0.55)),
-        url("../PhotoStudio/Assets/SplashScreen.png") center / cover;
-    }
-
-    .editor {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      gap: 12px;
-      padding: 12px;
-    }
-
-    .photo-view {
-      border-radius: 4px;
-      background:
-        linear-gradient(rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.04)),
-        url("../PhotoStudio/Assets/PhotoStudio.png") center / cover;
-    }
-
-    .controls {
-      display: grid;
-      gap: 8px;
-    }
-
-    .control-line {
-      height: 8px;
-      border-radius: 999px;
-      background: #717a84;
-    }
-
-    .control-line:nth-child(2) {
-      width: 78%;
-      background: #91a6b8;
-    }
-
-    .control-line:nth-child(3) {
-      width: 62%;
-      background: #cf9c9f;
+    .hero-shot img {
+      width: min(780px, 100%);
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center;
     }
 
     .section {
-      padding: 72px 7vw;
+      padding: 74px 6vw;
     }
 
     .section.alt {
@@ -254,14 +180,14 @@
     }
 
     .section-head {
-      max-width: 760px;
+      max-width: 820px;
       margin-bottom: 34px;
     }
 
     h2 {
       margin: 0;
       font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.12;
+      line-height: 1.15;
     }
 
     .section-head p {
@@ -278,74 +204,89 @@
       gap: 16px;
     }
 
-    .feature {
+    .feature,
+    .guide-step {
       min-height: 190px;
-      padding: 22px;
+      padding: 24px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: white;
     }
 
-    .feature-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 7px;
+    .feature img {
+      width: 54px;
+      height: 54px;
       margin-bottom: 18px;
-      background: var(--panel-strong);
-      position: relative;
+      border-radius: 12px;
     }
 
-    .feature-mark::after {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border-radius: 3px;
-      background: var(--accent);
-    }
-
-    .feature h3 {
+    .feature h3,
+    .guide-step h3 {
       margin: 0 0 10px;
       font-size: 20px;
     }
 
-    .feature p {
-      margin: 0;
+    .feature p,
+    .guide-step p,
+    .guide-step li {
       color: var(--muted);
       line-height: 1.65;
       word-break: keep-all;
     }
 
-    .workflow {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--line);
+    .feature p,
+    .guide-step p {
+      margin: 0;
     }
 
-    .step {
-      min-height: 150px;
-      padding: 22px;
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .guide-step ol {
+      margin: 12px 0 0;
+      padding-left: 22px;
+    }
+
+    .guide-step li + li {
+      margin-top: 7px;
+    }
+
+    .screenshot-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .screenshot-frame {
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.18);
+      border-radius: 8px;
+      background: #0f172a;
+      box-shadow: 0 20px 54px rgba(15, 23, 42, 0.18);
+    }
+
+    .notes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .note {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
       background: white;
     }
 
-    .step span {
+    .note strong {
       display: block;
-      color: var(--accent);
-      font-weight: 900;
-      margin-bottom: 18px;
+      margin-bottom: 6px;
     }
 
-    .step strong {
-      display: block;
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      margin: 0;
+    .note span {
       color: var(--muted);
       line-height: 1.6;
       word-break: keep-all;
@@ -355,52 +296,52 @@
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
-      gap: 24px;
-      padding: 38px 7vw;
-      background: #15191e;
+      gap: 28px;
+      padding: 42px 6vw;
+      background: var(--dark);
       color: white;
-    }
-
-    .download-band h2 {
-      font-size: clamp(28px, 3.5vw, 42px);
     }
 
     .download-band p {
       margin: 10px 0 0;
-      color: #cbd2da;
+      color: #cbd5e1;
       line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    .download-meta {
+      margin-top: 10px;
+      color: #93a4b8;
+      font-size: 14px;
     }
 
     footer {
-      padding: 24px 7vw;
+      padding: 24px 6vw;
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 14px;
-      border-top: 1px solid var(--line);
     }
 
     @media (max-width: 980px) {
-      .hero {
+      .hero,
+      .screenshot-layout,
+      .download-band {
         grid-template-columns: 1fr;
-        padding-top: 52px;
       }
 
-      .preview {
+      .hero-shot {
         justify-self: stretch;
       }
 
       .features,
-      .workflow {
+      .guide-grid {
         grid-template-columns: 1fr 1fr;
-      }
-
-      .download-band {
-        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 640px) {
       .topbar {
-        padding: 0 16px;
+        padding: 0 18px;
       }
 
       .nav a:not(.button) {
@@ -408,7 +349,8 @@
       }
 
       .hero,
-      .section {
+      .section,
+      .download-band {
         padding-left: 20px;
         padding-right: 20px;
       }
@@ -421,18 +363,9 @@
         font-size: 46px;
       }
 
-      .app-shot {
-        grid-template-columns: 1fr;
-      }
-
       .features,
-      .workflow {
+      .guide-grid {
         grid-template-columns: 1fr;
-      }
-
-      .download-band {
-        padding-left: 20px;
-        padding-right: 20px;
       }
     }
   </style>
@@ -440,119 +373,162 @@
 <body>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="PhotoStudio">
-      <img src="../PhotoStudio/Assets/Square44x44Logo.png" alt="" />
+      <img src="assets/app-icon.png" alt="" />
       <span>PhotoStudio</span>
     </a>
     <nav class="nav" aria-label="주요 메뉴">
       <a href="#features">기능</a>
-      <a href="#workflow">작업 흐름</a>
-      <a class="button" href="#" download>다운로드</a>
+      <a href="#guide">사용법</a>
+      <a href="#update">업데이트</a>
+      <a class="button" href="https://media.githubusercontent.com/media/kimothink/PhotoStudioSetup/main/PhotoStudioSetup-1.0.2.0.exe" download>다운로드</a>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">사진 정리와 편집을 한 곳에서</p>
+        <p class="eyebrow">Windows 사진 편집 도구</p>
         <h1>PhotoStudio</h1>
         <p class="lead">
-          여러 장의 사진을 빠르게 불러오고, 필터와 프레임, 리사이즈, 메타데이터 표시까지 한 번의 흐름으로 정리하는 데스크톱 사진 도구입니다.
+          여러 장의 사진을 불러오고, 필터와 프레임, 크기 조정, 메타데이터 표시를 한 화면에서 처리하는 데스크톱 사진 편집 프로그램입니다.
         </p>
         <div class="actions">
-          <a class="button" href="#" download>PhotoStudio 다운로드</a>
-          <a class="button secondary" href="#features">기능 살펴보기</a>
+          <a class="button" href="https://media.githubusercontent.com/media/kimothink/PhotoStudioSetup/main/PhotoStudioSetup-1.0.2.0.exe" download>설치 파일 다운로드</a>
+          <a class="button secondary" href="#guide">사용법 보기</a>
         </div>
       </div>
-
-      <div class="preview" aria-label="PhotoStudio 미리보기">
-        <div class="window-bar">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-        <div class="app-shot">
-          <div class="thumbs">
-            <div class="thumb"></div>
-            <div class="thumb"></div>
-            <div class="thumb"></div>
-            <div class="thumb"></div>
-          </div>
-          <div class="editor">
-            <div class="photo-view"></div>
-            <div class="controls">
-              <span class="control-line"></span>
-              <span class="control-line"></span>
-              <span class="control-line"></span>
-            </div>
-          </div>
-        </div>
+      <div class="hero-shot">
+        <img src="assets/photostudio-main.png" alt="PhotoStudio 실행 화면" />
       </div>
     </section>
 
     <section class="section" id="features">
       <div class="section-head">
-        <h2>사진 작업에 필요한 기본기를 단단하게</h2>
-        <p>개별 사진 편집과 체크한 사진 일괄 처리를 같은 화면에서 다룰 수 있도록 구성했습니다.</p>
+        <h2>사진 정리와 보정을 빠르게 처리합니다</h2>
+        <p>개별 사진 편집과 선택한 사진 일괄 처리를 같은 흐름 안에서 사용할 수 있도록 구성했습니다.</p>
       </div>
       <div class="features">
         <article class="feature">
-          <div class="feature-mark"></div>
-          <h3>필터 편집</h3>
-          <p>사진마다 다른 필터를 적용하거나 체크한 사진에 같은 필터를 한 번에 적용할 수 있습니다.</p>
+          <img src="assets/app-icon.png" alt="" />
+          <h3>사진 불러오기</h3>
+          <p>파일 또는 폴더 단위로 사진을 추가하고, 라이브러리에서 필요한 항목만 선택해 작업할 수 있습니다.</p>
         </article>
         <article class="feature">
-          <div class="feature-mark"></div>
-          <h3>프레임과 메타데이터</h3>
-          <p>사진 주변에 프레임을 더하고 촬영 정보를 자연스럽게 표시할 수 있습니다.</p>
+          <img src="assets/app-icon.png" alt="" />
+          <h3>필터와 프레임</h3>
+          <p>밝기, 대비, 채도와 함께 필름 느낌의 필터, 프레임 텍스트, 크기 조정 옵션을 적용할 수 있습니다.</p>
         </article>
         <article class="feature">
-          <div class="feature-mark"></div>
-          <h3>일괄 내보내기</h3>
-          <p>선택한 여러 장의 사진을 같은 규칙으로 저장해 반복 작업 시간을 줄입니다.</p>
+          <img src="assets/updater-icon.png" alt="" />
+          <h3>업데이트 지원</h3>
+          <p>업데이터가 함께 배포되어 새 버전이 올라오면 설치 파일을 내려받아 프로그램을 교체할 수 있습니다.</p>
         </article>
       </div>
     </section>
 
-    <section class="section alt" id="workflow">
+    <section class="section alt" id="guide">
       <div class="section-head">
-        <h2>불러오기부터 저장까지 간결하게</h2>
-        <p>앨범 정리, 후보 컷 선택, 빠른 보정, 결과물 저장에 맞춘 흐름입니다.</p>
+        <h2>사용법</h2>
+        <p>처음 실행부터 내보내기까지 자주 쓰는 순서대로 정리했습니다.</p>
       </div>
-      <div class="workflow">
-        <div class="step">
-          <span>01</span>
-          <strong>사진 불러오기</strong>
-          <p>파일 또는 폴더 단위로 사진을 추가합니다.</p>
+      <div class="guide-grid">
+        <article class="guide-step">
+          <h3>1. 로그인</h3>
+          <ol>
+            <li>PhotoStudio를 실행합니다.</li>
+            <li>Google 로그인 버튼을 눌러 계정 인증을 진행합니다.</li>
+            <li>계정 상태가 정상이고 만료일이 지나지 않은 경우 메인 화면으로 이동합니다.</li>
+          </ol>
+        </article>
+        <article class="guide-step">
+          <h3>2. 사진 추가</h3>
+          <ol>
+            <li>상단의 불러오기 버튼으로 사진 파일을 선택합니다.</li>
+            <li>여러 장을 한 번에 추가한 뒤 라이브러리 목록에서 작업할 사진을 체크합니다.</li>
+            <li>숨김 항목 표시 옵션으로 제외한 사진도 다시 확인할 수 있습니다.</li>
+          </ol>
+        </article>
+        <article class="guide-step">
+          <h3>3. 보정 설정</h3>
+          <ol>
+            <li>필터 목록에서 원하는 필터를 선택합니다.</li>
+            <li>밝기, 대비, 채도 슬라이더로 사진 톤을 조정합니다.</li>
+            <li>가로/세로 px와 비율 유지 옵션으로 저장 크기를 정합니다.</li>
+          </ol>
+        </article>
+        <article class="guide-step">
+          <h3>4. 프레임과 내보내기</h3>
+          <ol>
+            <li>프레임 텍스트를 입력하고 미리보기로 적용 상태를 확인합니다.</li>
+            <li>현재 파일 내보내기는 선택 중인 사진만 저장합니다.</li>
+            <li>체크 항목 내보내기는 선택된 사진을 같은 설정으로 일괄 저장합니다.</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="screen">
+      <div class="section-head">
+        <h2>화면 안내</h2>
+        <p>현재 캡처는 로그인 화면입니다. 로그인 후 같은 창 안에서 라이브러리, 미리보기, 필터, 내보내기 영역이 이어집니다.</p>
+      </div>
+      <div class="screenshot-layout">
+        <div class="screenshot-frame">
+          <img src="assets/photostudio-main.png" alt="PhotoStudio 로그인 화면 캡처" />
         </div>
-        <div class="step">
-          <span>02</span>
-          <strong>선택과 정리</strong>
-          <p>필요한 사진을 체크하고 숨김 항목을 관리합니다.</p>
+        <div class="notes">
+          <div class="note">
+            <strong>로그인 영역</strong>
+            <span>가운데 로그인 패널에서 Google 계정으로 인증합니다. 서버에서 사용자 상태와 만료일을 확인한 뒤 사용 가능 여부를 판단합니다.</span>
+          </div>
+          <div class="note">
+            <strong>작업 화면</strong>
+            <span>로그인 후 왼쪽은 사진 라이브러리, 오른쪽은 미리보기와 편집 옵션으로 구성됩니다.</span>
+          </div>
+          <div class="note">
+            <strong>저장 방식</strong>
+            <span>현재 파일만 저장하거나 체크한 사진을 한 번에 내보낼 수 있어 반복 작업을 줄일 수 있습니다.</span>
+          </div>
         </div>
-        <div class="step">
-          <span>03</span>
-          <strong>편집 적용</strong>
-          <p>필터, 밝기, 대비, 채도, 프레임을 조정합니다.</p>
-        </div>
-        <div class="step">
-          <span>04</span>
-          <strong>내보내기</strong>
-          <p>현재 사진 또는 체크한 사진을 결과물로 저장합니다.</p>
-        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="update">
+      <div class="section-head">
+        <h2>업데이트 방식</h2>
+        <p>PhotoStudio와 Updater는 함께 설치됩니다. 업데이트 확인 시 GitHub의 manifest 정보를 읽고, 현재 버전보다 높은 설치 파일이 있으면 내려받아 교체합니다.</p>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <img src="assets/updater-icon.png" alt="" />
+          <h3>Updater 포함 배포</h3>
+          <p>Release와 Debug 빌드 모두 PhotoStudio 실행 파일과 같은 폴더에 Updater.exe가 배치됩니다.</p>
+        </article>
+        <article class="feature">
+          <img src="assets/updater-icon.png" alt="" />
+          <h3>버전 확인</h3>
+          <p>manifest.json의 최신 버전, 다운로드 URL, SHA-256 값을 확인해 업데이트 파일을 검증합니다.</p>
+        </article>
+        <article class="feature">
+          <img src="assets/app-icon.png" alt="" />
+          <h3>재실행</h3>
+          <p>업데이트가 완료되면 PhotoStudio를 다시 실행해 새 버전으로 이어서 사용할 수 있습니다.</p>
+        </article>
       </div>
     </section>
 
     <section class="download-band" id="download">
       <div>
-        <h2>PhotoStudio 시작하기</h2>
-        <p>Windows 데스크톱에서 사진을 빠르게 정리하고 편집하세요.</p>
+        <h2>PhotoStudio 설치하기</h2>
+        <p>아래 버튼을 누르면 GitHub에 배포된 NSIS 설치 파일을 직접 다운로드합니다.</p>
+        <div class="download-meta">현재 배포 파일: PhotoStudioSetup-1.0.2.0.exe</div>
       </div>
-      <a class="button" href="#" download>다운로드</a>
+      <a class="button" href="https://media.githubusercontent.com/media/kimothink/PhotoStudioSetup/main/PhotoStudioSetup-1.0.2.0.exe" download>설치 파일 다운로드</a>
     </section>
   </main>
 
   <footer>
-    <span>PhotoStudio</span>
+    <span>PhotoStudio · kimothink</span>
   </footer>
 </body>
 </html>
